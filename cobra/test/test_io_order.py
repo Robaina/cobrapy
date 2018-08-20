@@ -26,7 +26,8 @@ def minimized_shuffle(small_model):
     chosen = sample(list(set(model.reactions) - set(model.exchanges)), 10)
     new = Model("minimized_shuffle")
     new.add_reactions(chosen)
-    LOGGER.debug("'%s' has %d metabolites, %d reactions and %d genes",
+    LOGGER.debug("'%s' has %d metabolites, %d reactions, %d genes "
+                 "and %d compartments",
                  new.id, new.metabolites, new.reactions, new.genes,
                  new.compartments)
     return new

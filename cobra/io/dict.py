@@ -76,6 +76,8 @@ def _fix_type(value):
     # handle legacy Formula type
     if value.__class__.__name__ == "Formula":
         return str(value)
+    if value.__class__.__name__ == "Compartment":
+        return value.id
     if value is None:
         return ""
     return value
@@ -185,9 +187,9 @@ def model_to_dict(model, sort=False):
     -------
     OrderedDict
         A dictionary with elements, 'genes', 'compartments', 'id',
-        'metabolites', 'notes' and 'reactions'; where 'metabolites', 'genes'
-        and 'metabolites' are in turn lists with dictionaries holding all
-        attributes to form the corresponding object.
+        'metabolites', 'notes' and 'reactions'; where 'metabolites',
+        'compartments', 'genes' and 'metabolites' are in turn lists with
+        dictionaries holding all attributes to form the corresponding object.
 
     See Also
     --------
