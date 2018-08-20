@@ -12,7 +12,7 @@ import pandas as pd
 from optlang.symbolics import Zero
 
 import cobra.util.solver as su
-from cobra.core import Metabolite, Model, Reaction
+from cobra.core import Metabolite, Model, Reaction, Compartment
 from cobra.util import create_stoichiometric_matrix
 from cobra.exceptions import OptimizationError
 
@@ -401,14 +401,58 @@ class TestCobraModel:
 
     def test_compartments(self, model):
         model = Model("test", "test")
+        model.add_compartments([Compartment("test")])
         met_c = Metabolite("a_c", compartment="c")
         met_e = Metabolite("a_e", compartment="e")
         rxn = Reaction("foo")
         rxn.add_metabolites({met_e: -1, met_c: 1})
         model.add_reactions([rxn])
-        assert len(model.compartments) == 2
+        assert len(model.compartments) == 3
         assert model.compartments.c.id == 'c'
         assert model.compartments.e.id == 'e'
+        assert model.compartments.test.id == 'test'
+
+    def test_compartment_assignment_after_metabolites(self, model):
+        model = Model("test")
+        a_c = Metabolite("a_c", compartment="c")
+        b_c = Metabolite("b_c", compartment="c")
+        rxn = Reaction("foo")
+        rxn.add_metabolites({a_c: -1, b_c: 1})
+        model.add_reactions([rxn])
+        assert model.compartments.c is not None
+        assert model.metabolites.a_c.compartment is \
+               model.metabolites.b_c.compartment
+
+    def test_remove_empty_compartment(self, model):
+        model = Model("test", "test")
+        model.add_compartments([Compartment("c")])
+        model.add_compartments([Compartment("e")])
+        model.remove_compartments([model.compartments.c])
+        model.remove_compartments([model.compartments.e], destructive=True)
+        assert len(model.compartments) == 0
+
+    @pytest.mark.xfail
+    def test_remove_populated_compartment(self, model):
+        model = Model("test", "test")
+        a_c = Metabolite("a_c", compartment="c")
+        b_c = Metabolite("b_c", compartment="c")
+        rxn = Reaction("foo")
+        rxn.add_metabolites({a_c: -1, b_c: 1})
+        model.add_reactions([rxn])
+        model.remove_compartments([model.compartments.c])
+        assert len(model.compartments) == 0
+
+    def test_remove_populated_compartment_destructive(self, model):
+        model = Model("test", "test")
+        a_c = Metabolite("a_c", compartment="c")
+        b_c = Metabolite("b_c", compartment="c")
+        rxn = Reaction("foo")
+        rxn.add_metabolites({a_c: -1, b_c: 1})
+        model.add_reactions([rxn])
+        model.remove_compartments([model.compartments.c], destructive=True)
+        assert len(model.compartments) == 0
+        assert model.metabolites.a_c.compartment is None
+        assert model.metabolites.b_c.compartment is None
 
     def test_add_reaction(self, model):
         old_reaction_count = len(model.reactions)

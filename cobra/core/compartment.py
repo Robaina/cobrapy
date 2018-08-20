@@ -5,30 +5,59 @@
 from __future__ import absolute_import
 
 from copy import deepcopy
-from cobra.util import format_long_string
+from cobra.util import format_long_string, is_not_sane
+from six import string_types
 
 from cobra.core.object import Object
 
 
 class Compartment(Object):
-    """Compartment is a class for holding information regarding
-        a compartment in a cobra.Model object
+    """
+    Compartment is a class for holding information regarding
+    a compartment in a cobra.Model object
 
-        Parameters
-        ----------
-        id : string
-           An identifier for the compartment
-        name : string
-           A human readable name.
-        """
+    Parameters
+    ----------
+    id : string
+       An identifier for the compartment
+    name : string
+       A human readable name.
+
+    """
     def __init__(self, id=None, name=""):
         super(Compartment, self).__init__(id=id, name=name)
+        self._id = None
+        self.id = id
 
     def __contains__(self, metabolite):
         return metabolite.compartment is self
 
+    def __eq__(self, other):
+        if self is other:
+            return True
+        if isinstance(other, string_types):
+            return self._id == other
+        else:
+            return self == other
+
+    def __ne__(self, other):
+        return not self.__eq__(self, other)
+
+    def __hash__(self):
+        return hash(self._id)
+
     def copy(self):
         return deepcopy(self)
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, value):
+        if is_not_sane(value):
+            raise TypeError("The compartment ID must be a non-empty string")
+        self._id = value
 
     def _repr_html_(self):
         return """
