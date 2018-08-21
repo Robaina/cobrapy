@@ -38,7 +38,7 @@ class Compartment(Object):
         if isinstance(other, string_types):
             return self._id == other
         else:
-            return self == other
+            return False
 
     def __ne__(self, other):
         return not self.__eq__(self, other)
