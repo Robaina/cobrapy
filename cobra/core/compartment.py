@@ -37,6 +37,8 @@ class Compartment(Object):
             return True
         if isinstance(other, string_types):
             return self._id == other
+        if isinstance(other, Compartment):
+            return self._id == other.id
         else:
             return False
 

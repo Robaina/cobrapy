@@ -241,6 +241,9 @@ def test_validate(trial, data_directory):
     if trial.validation_function is None:
         pytest.skip('not implemented')
     test_file = join(data_directory, trial.test_file)
+    print(50*'$$$$')
+    print (test_file)
+    print(50 * '$$$$')
     trial.validation_function(test_file)
 
 

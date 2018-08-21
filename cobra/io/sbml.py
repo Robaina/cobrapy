@@ -658,7 +658,7 @@ def add_sbml_species(sbml_model, cobra_metabolite, note_start_tag,
         sbml_species.setName(cobra_metabolite.id)
     if the_compartment is not None:
         try:
-            sbml_species.setCompartment(the_compartment)
+            sbml_species.setCompartment(the_compartment.id)
         except:
             warn('metabolite failed: ' + the_id)
             return cobra_metabolite
