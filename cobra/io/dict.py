@@ -137,10 +137,15 @@ def compartment_to_dict(compartment):
 
 
 def compartment_from_dict(compartment):
-    new_compartment = Compartment(compartment["id"])
-    for k, v in iteritems(compartment):
-        setattr(new_compartment, k, v)
-    return new_compartment
+    # Backwards compatibility support for the old schema
+    if "id" not in compartment:
+        id, name = next(iteritems(compartment))
+        return Compartment(id=id, name=name)
+    else:
+        new_compartment = Compartment(compartment["id"])
+        for k, v in iteritems(compartment):
+            setattr(new_compartment, k, v)
+        return new_compartment
 
 
 def reaction_to_dict(reaction):
@@ -239,7 +244,7 @@ def model_from_dict(obj):
         raise ValueError('Object has no reactions attribute. Cannot load.')
     model = Model()
     model.add_compartments([compartment_from_dict(compartment) for
-                            compartment in obj['compartments']])
+                            compartment in obj['compartments'] if compartment])
     model.add_metabolites(
         [metabolite_from_dict(metabolite) for metabolite in obj['metabolites']]
     )

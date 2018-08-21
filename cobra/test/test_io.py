@@ -51,7 +51,7 @@ def validate_json(filename):
     if jsonschema is None:
         warn("jsonschema not installed")
     else:
-        jsonschema.validate(loaded, io.json.json_schema)
+        jsonschema.validate(loaded, io.json.init_json_schema())
 
 
 def read_pickle(filename, load_function=load):

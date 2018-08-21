@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import absolute_import
+from importlib_resources import open_text
 
 try:
     import simplejson as json
@@ -133,6 +134,14 @@ def load_json_model(filename):
             return model_from_dict(json.load(file_handle))
     else:
         return model_from_dict(json.load(filename))
+
+
+def init_json_schema():
+    """ Import the JSON schema for schema validation. """
+    with open_text("cobra.io.schemata", "json_schema.json",
+                   encoding="utf-8") as file_handle:
+        json_schema = json.load(file_handle)
+    return json_schema
 
 
 json_schema = {
