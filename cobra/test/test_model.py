@@ -420,8 +420,7 @@ class TestCobraModel:
         rxn.add_metabolites({a_c: -1, b_c: 1})
         model.add_reactions([rxn])
         assert model.compartments.c is not None
-        assert model.metabolites.a_c.compartment is \
-               model.metabolites.b_c.compartment
+        assert a_c.compartment is b_c.compartment
 
     def test_remove_empty_compartment(self, model):
         model = Model("test", "test")

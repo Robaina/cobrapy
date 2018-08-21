@@ -5,7 +5,7 @@ from __future__ import absolute_import
 import re
 from warnings import warn
 
-from six import iteritems, string_types
+from six import iteritems
 from future.utils import raise_from, raise_with_traceback
 
 from cobra.exceptions import OptimizationError
@@ -70,7 +70,8 @@ class Metabolite(Species):
             self._compartment = None
         elif isinstance(value, Compartment):
             if self._model and value.id in self._model.compartments:
-                self._compartment = self._model.compartments.get_by_id(value.id)
+                self._compartment = \
+                    self._model.compartments.get_by_id(value.id)
             else:
                 self._compartment = value
         elif not is_not_sane(value):

@@ -29,6 +29,7 @@ def show_versions():
     """Print dependency information."""
     print_dependencies("cobra")
 
+
 def is_not_sane(string):
     """Check if a string is sane to be used as an ID for cobra components."""
     return not isinstance(string, string_types) or \

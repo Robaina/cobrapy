@@ -367,11 +367,6 @@ class Model(Object):
         compartment_list = [x for x in compartment_list
                             if x not in self.compartments]
 
-        # bad_ids = [m for m in compartment_list
-        #            if is_sane(m.id)]
-        # if len(bad_ids) != 0:
-        #     raise ValueError('invalid identifiers in {}'.format(repr(bad_ids)))
-
         self._compartments += compartment_list
 
         context = get_context(self)
@@ -420,12 +415,11 @@ class Model(Object):
                                "replaced with a compartment which already "
                                "exists in the model the ID of which is "
                                "identical".format(m.compartment, m.id))
-                m.compartment= m.compartment.id
+                m.compartment = m.compartment.id
             # Else, safely add the new compartment to the the central
             # list of compartments.
             else:
                 self.add_compartments([m.compartment])
-
         self.metabolites += metabolite_list
 
         # from cameo ...
@@ -473,7 +467,7 @@ class Model(Object):
             compartment_list = [compartment_list]
         # Ignore compartments that don't exist in the model
         compartment_list = [comp for comp in compartment_list
-                           if comp in self.compartments]
+                            if comp in self.compartments]
         for comp in compartment_list:
             compartment_mets = self.get_metabolites_in_compartment(comp)
             if destructive and compartment_mets:
