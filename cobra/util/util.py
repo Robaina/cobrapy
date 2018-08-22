@@ -30,7 +30,7 @@ def show_versions():
     print_dependencies("cobra")
 
 
-def is_not_sane(string):
-    """Check if a string is sane to be used as an ID for cobra components."""
-    return not isinstance(string, string_types) or \
-        len(string) < 1 or string is ' '
+def is_not_sane(id):
+    """Check if a id is sane to be used for cobra components."""
+    return not isinstance(id, string_types) or \
+        len(id) < 1 or any(c.isspace() for c in id)
