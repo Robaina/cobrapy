@@ -5,6 +5,7 @@ from __future__ import absolute_import
 import pytest
 from cobra.core import Compartment
 
+
 def test__eq__():
     a = b = Compartment("x")
     c = "x"
