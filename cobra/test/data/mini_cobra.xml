@@ -224,7 +224,7 @@
       <reaction id="R_D_LACt2" name="D_LACt2" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b3603 or b2975</p>
+            <p>GENE_ASSOCIATION: b3603 or b2975</p>
           </html>
         </notes>
         <listOfReactants>
@@ -250,7 +250,7 @@
       <reaction id="R_ENO" name="enolase" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b2779</p>
+            <p>GENE_ASSOCIATION: b2779</p>
           </html>
         </notes>
         <listOfReactants>
@@ -332,7 +332,7 @@
       <reaction id="R_FBA" name="fructose-bisphosphate aldolase" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b1773 or b2097 or b2925</p>
+            <p>GENE_ASSOCIATION: b1773 or b2097 or b2925</p>
           </html>
         </notes>
         <listOfReactants>
@@ -357,7 +357,7 @@
       <reaction id="R_GAPD" name="glyceraldehyde-3-phosphate dehydrogenase" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b1779</p>
+            <p>GENE_ASSOCIATION: b1779</p>
           </html>
         </notes>
         <listOfReactants>
@@ -385,7 +385,7 @@
       <reaction id="R_GLCpts" name="D-glucose transport via PEP:Pyr PTS" reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: ( b2417 and b1621 and b2415 and b2416 ) or ( b2417 and b1101 and b2415 and b2416 ) or ( b1817 and b1818 and b1819 and b2415 and b2416 )</p>
+            <p>GENE_ASSOCIATION: ( b2417 and b1621 and b2415 and b2416 ) or ( b2417 and b1101 and b2415 and b2416 ) or ( b1817 and b1818 and b1819 and b2415 and b2416 )</p>
           </html>
         </notes>
         <listOfReactants>
@@ -411,7 +411,7 @@
       <reaction id="R_H2Ot" name="R H2O transport via - diffusion" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b0875 or s0001</p>
+            <p>GENE_ASSOCIATION: b0875 or s0001</p>
           </html>
         </notes>
         <listOfReactants>
@@ -435,7 +435,7 @@
       <reaction id="R_LDH_D" name="D-lactate dehydrogenase" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b2133 or b1380</p>
+            <p>GENE_ASSOCIATION: b2133 or b1380</p>
           </html>
         </notes>
         <listOfReactants>
@@ -462,7 +462,7 @@
       <reaction id="R_PFK" name="phosphofructokinase" reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b3916 or b1723</p>
+            <p>GENE_ASSOCIATION: b3916 or b1723</p>
           </html>
         </notes>
         <listOfReactants>
@@ -489,7 +489,7 @@
       <reaction id="R_PGI" name="glucose-6-phosphate isomerase" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b4025</p>
+            <p>GENE_ASSOCIATION: b4025</p>
           </html>
         </notes>
         <listOfReactants>
@@ -513,7 +513,7 @@
       <reaction id="R_PGK" name="phosphoglycerate kinase" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b2926</p>
+            <p>GENE_ASSOCIATION: b2926</p>
           </html>
         </notes>
         <listOfReactants>
@@ -539,7 +539,7 @@
       <reaction id="R_PGM" name="phosphoglycerate mutase" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b4395 or b3612 or b0755</p>
+            <p>GENE_ASSOCIATION: b4395 or b3612 or b0755</p>
           </html>
         </notes>
         <listOfReactants>
@@ -563,7 +563,7 @@
       <reaction id="R_PIt2r" name="R phosphate reversible transport via - symport" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b2987 or b3493</p>
+            <p>GENE_ASSOCIATION: b2987 or b3493</p>
           </html>
         </notes>
         <listOfReactants>
@@ -589,7 +589,7 @@
       <reaction id="R_PYK" name="pyruvate kinase" reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b1854 or b1676</p>
+            <p>GENE_ASSOCIATION: b1854 or b1676</p>
           </html>
         </notes>
         <listOfReactants>
@@ -616,7 +616,7 @@
       <reaction id="R_TPI" name="triose-phosphate isomerase" reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE ASSOCIATION: b3919</p>
+            <p>GENE_ASSOCIATION: b3919</p>
           </html>
         </notes>
         <listOfReactants>
