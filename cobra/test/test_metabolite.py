@@ -3,14 +3,15 @@
 from __future__ import absolute_import
 
 import pytest
-from cobra.core import Metabolite, Model, Reaction, Compartment
+from cobra.core import Metabolite, Model, Compartment
+
 
 def test_compartment_setter():
     met = Metabolite('x', compartment=None)
     cytosol = Compartment('c')
     model = Model()
     model.add_compartments([cytosol])
-    met2 =Metabolite("y")
+    met2 = Metabolite("y")
     met5 = Metabolite("b")
     model.add_metabolites([met2, met5])
     met2.compartment = Compartment("c")
@@ -21,7 +22,7 @@ def test_compartment_setter():
     assert met.compartment is None
     assert met2.compartment is cytosol
     assert met3.compartment is cytosol
-    assert isinstance(met4.compartment,Compartment)
+    assert isinstance(met4.compartment, Compartment)
     assert met5.compartment is cytosol
     with pytest.raises(TypeError):
         Metabolite("c", compartment="Sane Compartment, Not!")
