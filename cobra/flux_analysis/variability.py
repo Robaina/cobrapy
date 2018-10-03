@@ -17,7 +17,8 @@ from cobra.util import solver as sutil
 
 
 def flux_variability_analysis(model, reaction_list=None, loopless=False,
-                              fraction_of_optimum=1.0, pfba_factor=None):
+                              fraction_of_optimum=1.0, pfba_factor=None,
+                              include_solutions=False):
     """
     Determine the minimum and maximum possible flux value for each reaction.
 
@@ -45,6 +46,8 @@ def flux_variability_analysis(model, reaction_list=None, loopless=False,
         one that optimally minimizes the total flux sum, the ``pfba_factor``
         should, if set, be larger than one. Setting this value may lead to
         more realistic predictions of the effective flux bounds.
+    includde_solutions : logical, optional
+        Include the flux distribution associated to each optimal minimum and maximum flux value calculated during the FVA.
 
     Returns
     -------
@@ -142,6 +145,8 @@ def flux_variability_analysis(model, reaction_list=None, loopless=False,
                     value = loopless_fva_iter(model, rxn)
                 else:
                     value = model.solver.objective.value
+                    optsol = model.solver.fluxes
+                    # TODO: Requires changing the construction of the data structure since it's looping through reactions and we get a flux vector per iteraton that we cannot allocate
                 fva_results.at[rxn.id, what] = value
                 model.solver.objective.set_linear_coefficients(
                     {rxn.forward_variable: 0, rxn.reverse_variable: 0})
@@ -181,7 +186,7 @@ def find_blocked_reactions(model, reaction_list=None,
         if reaction_list is None:
             reaction_list = model.reactions
         # limit to reactions which are already 0. If the reactions already
-        # carry flux in this solution, then they can not be blocked.
+        # carry flux in this solution, then they cannot be blocked.
         model.slim_optimize()
         solution = get_solution(model, reactions=reaction_list)
         reaction_list = [rxn for rxn in reaction_list if
