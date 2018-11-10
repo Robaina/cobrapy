@@ -150,10 +150,15 @@ def flux_variability_analysis(model, reaction_list=None, loopless=False,
                     value = loopless_fva_iter(model, rxn)
                 else:
                     value = model.solver.objective.value
+<<<<<<< HEAD
                     # Obtain back the net flux
                     split_fluxes = list(model.solver.primal_values.values())[:-1]
                     optfluxes = [split_fluxes[rxn_i] - split_fluxes[rxn_i + 1]
                                  for rxn_i in range(0, 2*nrxns, 2)]
+=======
+                    optsol = model.solver.fluxes
+                    # TODO: Requires changing the construction of the data structure since it's looping through reactions and we get a flux vector per iteraton that we cannot allocate
+>>>>>>> bf2683792ba0b4b4b967cbcd4037dcf831c65114
                 fva_results.at[rxn.id, what] = value
                 fva_min_fluxes[sense + '_' + rxn.id] = optfluxes
                 model.solver.objective.set_linear_coefficients(
